@@ -1,10 +1,3 @@
-/**
- * @name Frequency Spectrum
- * @description <p>Visualize the frequency spectrum of live audio input.</p>
- * <p><em><span class="small"> To run this example locally, you will need the
- * <a href="http://p5js.org/reference/#/libraries/p5.sound">p5.sound library</a>
- * and a running <a href="https://github.com/processing/p5.js/wiki/Local-server">local server</a>.</span></em></p>
- */
 var mic, fft,
   labelScale = 3, 
   userInteracted = false; // need to wait for user interaction before using WebAudio https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
