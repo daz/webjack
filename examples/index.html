@@ -80,7 +80,9 @@
         document.head.appendChild(scriptEl);
 
         // try doing the rest after the script has loaded
-        (function() {
+        setTimeout(delayedStartup, 1000);
+          
+        function delayedStartup() {
           setupEqualizer();
 
           $('.btn-begin').hide();
@@ -103,7 +105,7 @@
           $('.send').click(send);
           $('.sendForm').submit(send);
 
-        })();
+        }
 
       }
 
