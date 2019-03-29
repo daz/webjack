@@ -75,31 +75,36 @@
       // https://goo.gl/7K7WLu
       function initWebjack() {
 
-        setupEqualizer();
-
-        $('.btn-begin').hide();
-        
         var scriptEl = document.createElement('script');
         scriptEl.setAttribute('src','fft/p5.sound.min.js');
         document.head.appendChild(scriptEl);
-        
-        connection = new WebJack.Connection(profile);
 
-        connection.listen(function(data) {
-          log.apend(data);
-          console.log('Arduino to WebJack: ' + data);
-        });
+        // try doing the rest after the script has loaded
+        (function() {
+          setupEqualizer();
 
-        function send(e) {
-          e.preventDefault();
-          var text = $('.userinput').val();
-          connection.send(text);
-          console.log('WebJack to Arduino: ' + text);
-          return false;
-        }
+          $('.btn-begin').hide();
 
-        $('.send').click(send);
-        $('.sendForm').submit(send);
+          connection = new WebJack.Connection(profile);
+
+          connection.listen(function(data) {
+            log.apend(data);
+            console.log('Arduino to WebJack: ' + data);
+          });
+
+          function send(e) {
+            e.preventDefault();
+            var text = $('.userinput').val();
+            connection.send(text);
+            console.log('WebJack to Arduino: ' + text);
+            return false;
+          }
+
+          $('.send').click(send);
+          $('.sendForm').submit(send);
+
+        })();
+
       }
 
     });
