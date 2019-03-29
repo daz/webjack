@@ -24,9 +24,7 @@
 
   <p>Make sure the audio cable is connected and your Arduino is running one of the example sketches. <i>Eventually, crosstalk between signal lines will make sent data appear as received data</i>. To test without an Arduino, use <a href="https://www.youtube.com/watch?v=GtJW1Dlt3cg">this YouTube video recording of sensor data</a></p>
 
-  <div style="float:right;margin-bottom:10px;" class="equalizer">
-    <button href="#" onClick="setupEqualizer()" class="eq-btn">Click to test audio</button>
-  </div>
+  <div style="float:right;margin-bottom:10px;" class="equalizer"></div>
 
   <p>
     <form class="sendForm" style="display:inline;">
@@ -76,9 +74,12 @@
       // https://github.com/publiclab/webjack/issues/88
       // https://goo.gl/7K7WLu
       function initWebjack() {
+
+        setupEqualizer();
+
         $('.btn-begin').hide();
         
-        $('body').append('<script src="fft/p5.sound.min.js"></script>');
+        $('body').append("<script src='fft/p5.sound.min.js'></script>");
         
         connection = new WebJack.Connection(profile);
 
