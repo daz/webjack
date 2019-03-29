@@ -6,6 +6,7 @@ function setupEqualizer() {
   createCanvas(350, 100);
   noFill();
   $('.equalizer').append($('.p5Canvas').remove()) 
+  resizeCanvas(350, 100);
   $('.eq-btn').hide() 
 
   userInteracted = true;
