@@ -15,7 +15,6 @@
   <!-- equalizer code -->
     <script src="fft/p5.min.js"></script>
     <script src="fft/p5.dom.min.js"></script>
-    <script src="fft/p5.sound.min.js"></script>
   <!-- end equalizer code -->
 
 </head>
@@ -77,6 +76,10 @@
       // https://github.com/publiclab/webjack/issues/88
       // https://goo.gl/7K7WLu
       function initWebjack() {
+        $('.btn-begin').hide();
+        
+        $('body').append('<script src="fft/p5.sound.min.js"></script>');
+        
         connection = new WebJack.Connection(profile);
 
         connection.listen(function(data) {
