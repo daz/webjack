@@ -79,7 +79,9 @@
 
         $('.btn-begin').hide();
         
-        $('body').append("<script src='fft/p5.sound.min.js'></script>");
+        var scriptEl = document.createElement('script');
+        scriptEl.setAttribute('src','fft/p5.sound.min.js');
+        document.head.appendChild(scriptEl);
         
         connection = new WebJack.Connection(profile);
 
