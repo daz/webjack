@@ -44,6 +44,7 @@ function setupEqualizer() {
           sketch.text(freq, map(i, 0, 1024 / scale, 0, sketch.width), sketch.height * 0.97);
           sketch.fill(0, 100);
         }
-    };
+      }
+    }
   }, $('.equalizer')[0]);
 }
