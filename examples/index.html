@@ -79,33 +79,34 @@
         scriptEl.setAttribute('src','fft/p5.sound.min.js');
         document.head.appendChild(scriptEl);
 
-        // try doing the rest after the script has loaded
-        setTimeout(delayedStartup, 4000);
-          
-        function delayedStartup() {
-          setupEqualizer();
+        setupEqualizer();
 
-          $('.btn-begin').hide();
-
-          connection = new WebJack.Connection(profile);
-
-          connection.listen(function(data) {
-            log.apend(data);
-            console.log('Arduino to WebJack: ' + data);
-          });
-
-          function send(e) {
-            e.preventDefault();
-            var text = $('.userinput').val();
-            connection.send(text);
-            console.log('WebJack to Arduino: ' + text);
-            return false;
+        function touchStarted() {
+          if (getAudioContext().state !== 'running') {
+            getAudioContext().resume();
           }
-
-          $('.send').click(send);
-          $('.sendForm').submit(send);
-
         }
+        
+        $('.btn-begin').hide()
+          .click(touchStarted);
+
+        connection = new WebJack.Connection(profile);
+
+        connection.listen(function(data) {
+          log.apend(data);
+          console.log('Arduino to WebJack: ' + data);
+        });
+
+        function send(e) {
+          e.preventDefault();
+          var text = $('.userinput').val();
+          connection.send(text);
+          console.log('WebJack to Arduino: ' + text);
+          return false;
+        }
+
+        $('.send').click(send);
+        $('.sendForm').submit(send);
 
       }
 
